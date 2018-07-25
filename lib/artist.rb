@@ -1,8 +1,9 @@
+require "pry"
 require_relative "song.rb"
 
 class Artist
 
-  attr_accessor :name
+  attr_accessor :name, :genre
 
   @@all = []
 
@@ -13,10 +14,19 @@ class Artist
   def initialize(name)
     @@all << self
     @name = name
+
   end
 
   def new_song(name, genre)
-    self.new(name, genre)
+    Song.new(name, self, genre)
+    # binding.pry
   end
 
+  def songs
+    Song.all.select { |song| song.artist == self }
+  end
+
+  def genres
+    songs.map {|song| song.genre}
+  end
 end
