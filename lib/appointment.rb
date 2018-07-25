@@ -1,6 +1,6 @@
 require_relative "patient.rb"
 require_relative "doctor.rb"
-
+require "pry"
 class Appointment
 
   attr_accessor :patient, :doctor, :date
@@ -17,5 +17,5 @@ class Appointment
   def self.all
     @@all
   end
-
+# binding.pry
 end
